@@ -4,8 +4,8 @@ This is my solution to the [Skilled e-learning landing page challenge on Fronten
 
 ## 🚀 Live Demo
 
-- 🔗 Live Site: [View the site](https://ahmednaser.github.io/skilled-elearning-landing-page)
-- 💻 Source Code: [GitHub Repository](https://github.com/ahmednaser/skilled-elearning-landing-page)
+- 🔗 Live Site: [View the site](https://ahmednasser111.github.io/skilled-elearning-landing-page)
+- 💻 Source Code: [GitHub Repository](https://github.com/ahmednasser111/skilled-elearning-landing-page)
 
 ## 📱 Screenshots
 
