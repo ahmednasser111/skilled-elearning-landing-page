@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap"
+    rel="stylesheet">
+    <title>Frontend Mentor | Skilled e-learning landing page</title>
+
+  <style>
+    /*
+* Design Sizes:
+*   Mobile: 375x2615
+*   Tablet: 768 × 1760
+*   Desktop: 1440 × 1845
+*/
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --col-medium-purple: hsla(234, 25%, 52%, 1);
+    --col-dark-purple: hsla(234, 53%, 16%, 1);
+    --col-light-purple: hsla(233, 10%, 56%, 1);
+
+    --col-hot-pink: hsla(341, 92%, 62%, 1);
+    --col-light-pink: hsla(341, 100%, 83%, 1);
+
+    --col-white: hsla(0, 0%, 100%, 1);
+
+    --col-orange-to-pink: linear-gradient(180deg, #ff6f48 0.04%, #f02aa6 100%);
+    --col-purple-to-pink: linear-gradient(180deg, #4851ff 0%, #f02aa6 99.92%);
+
+    --col-orange-to-pink-hover: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.5)
+        ),
+        linear-gradient(180deg, #ff6f48 0%, #f02aa6 100%);
+    --col-purple-to-pink-hover: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.5)
+        ),
+        linear-gradient(180deg, #4851ff -54.32%, #f02aa6 100%);
+
+    --col-white-to-off-white: linear-gradient(180deg, #ffffff 0%, #f0f1ff 100%);
+
+    /* Typography */
+    --fs-heading-xl: 3.5rem;
+    --lh-heading-xl: 4.4375rem;
+    --fw-headings: 800;
+
+    --fs-heading-l: 2.5rem;
+    --lh-heading-l: 3.1875rem;
+
+    --fs-heading-m: 1.5rem;
+    --lh-heading-m: 2rem;
+
+    --fs-heading-s: 1.25rem;
+    --lh-heading-s: 1.5625rem;
+
+    --fs-body-m: 1.125rem;
+    --lh-body-m: 1.75rem;
+    --fw-body-m: 500;
+
+    --fs-body-s: 1rem;
+    --lh-body-s: 1.625rem; /* design system says 28px / 1.75rem, but in the elements themselves its 26px / 1.625rem */
+    --fw-body-s: 500;
+    /* Sizing */
+
+    --border-radius: 1.75rem;
+
+    /* Other */
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Plus Jakarta Sans", sans-serif;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--col-white-to-off-white);
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.logo {
+    width: 5.5625rem;
+    vertical-align: center;
+}
+
+.btn {
+    font-size: var(--fs-body-s);
+    line-height: var(--lh-body-s);
+    font-weight: 700;
+
+    padding: 0.625rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+}
+
+.banner__getting-started {
+    background-color: var(--col-dark-purple);
+    color: var(--col-white);
+}
+
+.banner__getting-started:where(:focus, :hover) {
+    background-color: var(--col-medium-purple);
+}
+
+.intro {
+    margin-top: 2.375rem;
+    margin-inline: 1rem;
+    overflow: hidden;
+}
+.intro__header {
+    font-size: var(--fs-heading-l);
+    line-height: var(--lh-heading-l);
+    font-weight: var(--fw-headings);
+
+    color: var(--col-dark-purple);
+}
+
+.intro__body,
+.card__body {
+    font-size: var(--fs-body-s);
+    line-height: var(--lh-body-s);
+    font-weight: var(--fw-body-s);
+
+    color: var(--col-light-purple);
+}
+.intro__body {
+    margin-top: 1.625rem;
+}
+.intro__getting-started {
+    display: inline-block;
+    margin-top: 1.5rem;
+
+    padding: 0.9375rem 2.3438rem;
+
+    background: var(--col-orange-to-pink);
+    color: var(--col-white);
+    align-self: center;
+}
+
+.intro__getting-started:where(:focus, :hover) {
+    background: var(--col-orange-to-pink-hover);
+}
+
+.intro__image {
+    display: block;
+    margin-top: 1.875rem;
+    /* width: 100%; */
+    z-index: -1;
+}
+
+.intro__image img {
+    display: block;
+    margin-left: -13%;
+    width: 125%;
+}
+
+main {
+    margin-inline: auto;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: -1.125rem;
+    margin-inline: 1rem;
+    gap: 2.375rem;
+
+    justify-content: center;
+
+    max-width: 70rem;
+}
+.card {
+    border-radius: 0.625rem;
+    background: white;
+
+    padding-inline: 1.75rem;
+
+    max-width: 21.875rem;
+}
+.cards__header {
+    font-size: var(--fs-heading-m);
+    line-height: var(--lh-heading-m);
+    font-weight: var(--fw-headings);
+
+    color: var(--col-white);
+    background: var(--col-orange-to-pink);
+    padding: 1.5rem 1.875rem 2rem 1.6875rem;
+}
+.card__image {
+    position: relative;
+    width: 3.5rem;
+    height: 3.5rem;
+    top: -1.4375rem;
+}
+.card__header {
+    margin-top: 0rem;
+
+    font-size: var(--fs-heading-s);
+    line-height: var(--lh-heading-s);
+    font-weight: var(--fw-headings);
+
+    color: var(--col-dark-purple);
+}
+.card__body {
+    margin-top: 1rem;
+}
+.card__getting-started {
+    display: inline-block;
+    font-size: 1.125rem;
+    padding: unset;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+
+    color: var(--col-hot-pink);
+}
+
+.card__getting-started:where(:focus, :hover) {
+    color: var(--col-light-pink);
+}
+
+.footer {
+    margin-top: 5.25rem;
+    background: var(--col-dark-purple);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.25rem 1rem;
+}
+
+.footer__getting-started {
+    background: var(--col-purple-to-pink);
+    color: var(--col-white);
+}
+
+.footer__getting-started:where(:focus, :hover) {
+    background: var(--col-purple-to-pink-hover);
+}
+
+@media screen and (min-width: 48rem) {
+    header {
+        position: relative;
+        overflow: hidden;
+    }
+    .banner {
+        padding: 1.5rem 2.4688rem 0 2.4688rem;
+    }
+    .intro {
+        margin-top: 6.1875rem;
+        margin-left: 2.4688rem;
+        overflow: unset;
+        display: flex;
+        flex-direction: row;
+        flex: 1 0 50%;
+        /* width: 51%; */
+        padding-bottom: 13.125rem;
+        position: relative;
+    }
+
+    .intro > div {
+        flex-basis: 56%;
+    }
+
+    .intro__image {
+        display: block;
+        position: absolute;
+        top: -18.1875rem; /*-38vw;*/
+        right: -25.25rem; /*-52.5vw;*/
+    }
+
+    .intro__image img {
+        display: block;
+        /* margin-right: 113%; */
+        width: 43.4375rem;
+    }
+
+    .cards {
+        margin-top: unset;
+        margin-inline: 2.4688rem;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.6875rem;
+        row-gap: 3.3125rem;
+    }
+
+    .cards > * {
+        flex-basis: 49%;
+    }
+
+    .card {
+        padding-inline: 2rem 1.3125rem;
+    }
+
+    .cards__header {
+        padding: 3.5rem 1.3125rem 8.6875rem 2rem;
+    }
+
+    .footer {
+        margin-top: 5.5rem;
+        padding: 2.25rem 2.4688rem;
+    }
+}
+
+@media screen and (min-width: 90rem) {
+    /* 1440px */
+    :root {
+        --fs-heading-m: 2rem;
+        --lh-heading-m: 2.5rem;
+
+        --fs-heading-s: 1.5rem;
+        --lh-heading-s: 1.875rem;
+    }
+
+    .btn {
+        font-size: var(--fs-body-m);
+        line-height: var(--lh-body-m);
+
+        padding: 0.875rem 1.9688rem;
+    }
+
+    .banner {
+        padding: 1.5rem 10.3125rem 0 10.3125rem;
+    }
+
+    .intro {
+        margin-top: 10.875rem;
+        margin-left: 10.3125rem;
+        padding-bottom: 15.625rem;
+    }
+
+    .intro > div {
+        flex-basis: 38%;
+    }
+
+    .intro__header {
+        font-size: var(--fs-heading-xl);
+        line-height: var(--lh-heading-xl);
+    }
+
+    .intro__body {
+        font-size: var(--fs-body-m);
+        line-height: var(--lh-body-m);
+    }
+
+    .intro__getting-started {
+        padding: 1.1875rem 1.9375rem 1rem 2rem;
+        margin-top: 2.625rem;
+    }
+
+    .intro__image {
+        top: -26.9375rem; /*-38vw;*/
+        right: -30.375rem; /*-52.5vw;*/
+    }
+
+    .intro__image img {
+        width: 65.375rem;
+    }
+
+    .cards {
+        margin-inline: 10.3125rem;
+        gap: 1.875rem;
+        row-gap: 5rem;
+    }
+
+    .cards__header {
+        padding: 4rem 2rem 8.625rem 2rem;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        padding-inline: 2rem;
+    }
+
+    .card__header {
+        margin-top: 0.5rem;
+    }
+
+    .card__body {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: var(--fs-body-m);
+        line-height: var(--lh-body-m);
+    }
+
+    .card__getting-started {
+        padding: unset;
+        /* margin-top: ; */
+        margin-top: auto;
+        margin-bottom: 2.5rem;
+    }
+
+    .logo {
+        width: 7.125rem;
+    }
+
+    .footer {
+        margin-top: 8.75rem;
+        padding: 2rem 10.3125rem;
+    }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="banner">
+      <img class="logo banner__logo" src="assets/logo-dark.svg" alt="skilled logo">
+      <a class="btn banner__getting-started" href="">Get Started</a>
+    </div>
+
+    <div class="intro">
+      <div>
+        <h1 class="intro__header">Maximize skill, minimize budget</h1>
+        <p class="intro__body">
+          Our modern courses across a range of in-demand skills will give you the
+          knowledge you need to live the life you want.
+        </p>
+
+        <a class="btn intro__getting-started" href="">Get Started</a>
+      </div>
+
+      <picture class="intro__image">
+        <source media="(min-width: 90rem)" srcset="assets/image-hero-desktop@2x.webp 2x, assets/image-hero-desktop.webp"
+          type="image/webp">
+        <source media="(min-width: 90rem)" srcset="assets/image-hero-desktop@2x.png 2x, assets/image-hero-desktop.png">
+        <source media="(min-width: 48rem)" srcset="assets/image-hero-tablet@2x.webp 2x, assets/image-hero-tablet.webp"
+          type="image/webp">
+        <source media="(min-width: 48rem)" srcset="assets/image-hero-tablet@2x.png 2x, assets/image-hero-tablet.png">
+        <source media="(max-width: 47.9375rem)"
+          srcset="assets/image-hero-mobile@2x.webp 2x, assets/image-hero-mobile.webp" type="image/webp">
+        <source media="(max-width: 47.9375rem)"
+          srcset="assets/image-hero-mobile@2x.png 2x, assets/image-hero-mobile.png">
+
+        <img class="hero_img" src="assets/image-hero-mobile.png"
+          srcset="assets/image-hero-mobile.png, assets/image-hero-mobile@2x.png 2x"
+          alt="Woman blowing onto a mug. Top right of her is a box indicating 29k Members. On the bottom right is a box indicating 1,451 Course Hours.">
+
+      </picture>
+
+    </div>
+
+  </header>
+
+
+  <main>
+    <section class="cards">
+
+      <h2 class="card cards__header">Check out our most popular courses!</h2>
+
+      <article class="card">
+        <img class="card__image" src="assets/icon-animation.svg"
+          alt="Stylised image of Person running, inside a circle with a gradient from orange to pink"
+          aria-hidden="true">
+        <h3 class="card__header">Animation</h3>
+        <p class="card__body">
+          Learn the latest animation techniques to create stunning motion design and captivate your audience.
+        </p>
+        <a class="btn card__getting-started" href="">Get Started</a>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="assets/icon-design.svg"
+          alt="Stylised image of Picture, inside a circle with a gradient from orange to pink" aria-hidden="true">
+        <h3 class="card__header">Design</h3>
+        <p class="card__body">
+          Create beautiful, usable interfaces to help shape the future of how the web looks.
+        </p>
+        <a class="btn card__getting-started" href="">Get Started</a>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="assets/icon-photography.svg"
+          alt="Stylised image of a Camera, inside a circle with a gradient from orange to pink" aria-hidden="true">
+        <h3 class="card__header">Photography</h3>
+        <p class="card__body">
+          Explore critical fundamentals like lighting, composition, and focus to capture exceptional photos.
+        </p>
+        <a class="btn card__getting-started" href="">Get Started</a>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="assets/icon-crypto.svg"
+          alt="Stylised image of 8 dots, inside a circle with a gradient from orange to pink" aria-hidden="true">
+        <h3 class="card__header">Crypto</h3>
+        <p class="card__body">
+          All you need to know to get started investing in crypto. Go from beginner to advanced with this 54 hour
+          course.
+        </p>
+        <a class="btn card__getting-started" href="">Get Started</a>
+      </article>
+
+      <article class="card">
+        <img class="card__image" src="assets/icon-business.svg"
+          alt="Stylised image of Bag with handles, inside a circle with a gradient from orange to pink"
+          aria-hidden="true">
+        <h3 class="card__header">Business</h3>
+        <p class="card__body">
+          A step-by-step playbook to help you start, scale, and sustain your business without outside investment.
+        </p>
+        <a class="btn card__getting-started" href="">Get Started</a>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img class="logo footer__logo" src="assets/logo-light.svg" alt="skilled logo">
+    <a class="btn footer__getting-started" href="">Get Started</a>
+  </footer>
+
+</body>
+
+</html>
